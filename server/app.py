@@ -40,12 +40,12 @@ def index_articles():
 
 @app.route('/articles/<int:id>')
 def show_article(id):
-    if 'page-views' not in session:
+    if 'page_views' not in session:
         session['page_views']=0
     else:
         session['page_views'] +=1
 
-    if session['page_views'] > 3:
+    if session['page_views'] > 5:
         response = jsonify({"message": "Maximum pageview limit reached"})
         response.status_code = 401
         return response
